@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <!-- Ito ang idadagdag para sa Back Button -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>JZAR Inventory</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">JZAR Inventory</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Section Header para pormal at match sa Sales page -->
+  <ion-list-header color="light">
+    <ion-label color="primary"><b>Current Stocks & Materials</b></ion-label>
+  </ion-list-header>
+
+  <!-- Dito nagsisimula ang idinagdag natin -->
+  <ion-list>
+    <!-- Ito ang sasagot sa @for requirement -->
+    @for (item of items; track item.id) {
+
+    <!-- Ito ang sasagot sa Reusable Component at Property Binding requirement -->
+    <app-stock-card [item]="item"></app-stock-card>
+
+    }
+  </ion-list>
+</ion-content>

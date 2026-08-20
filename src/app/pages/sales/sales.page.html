@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <!-- Ito ang idadagdag para sa Back Button -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>JZAR Sales & Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">JZAR Sales</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Listahan ng pwedeng bilhin -->
+  <ion-list-header color="light">
+    <ion-label color="primary"><b>Available Parts & Materials</b></ion-label>
+  </ion-list-header>
+
+  <ion-list>
+    <!-- Ito ang sasagot sa @for requirement -->
+    @for (item of availableItems; track item.id) {
+    <ion-item>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>
+          ₱{{ item.price }} |
+          <span style="color: rgb(255, 0, 0)">Stock: {{ item.stock }}</span>
+        </p>
+      </ion-label>
+      <!-- Ito ang sasagot sa Event Binding requirement -->
+      <ion-button
+        slot="end"
+        fill="solid"
+        shape="round"
+        color="tertiary"
+        (click)="addItem(item)"
+      >
+        + Add
+      </ion-button>
+    </ion-item>
+    } @if (cartItems.length > 0) {
+    <div style="padding: 20px">
+      <ion-button
+        expand="block"
+        color="success"
+        shape="round"
+        (click)="checkout()"
+      >
+        Checkout Items
+      </ion-button>
+    </div>
+    }
+  </ion-list>
+
+  <!-- Cart Section -->
+  <ion-list-header color="light">
+    <!-- Ito ang sasagot sa Interpolation requirement -->
+    <ion-label color="primary"
+      ><b>Current Cart (Total: ₱{{ totalPrice }})</b></ion-label
+    >
+  </ion-list-header>
+
+  <ion-list>
+    <!-- Ito ang sasagot sa @if requirement -->
+    @if (cartItems.length === 0) {
+    <ion-item>
+      <ion-label color="medium">Cart is empty.</ion-label>
+    </ion-item>
+    } @else { @for (cartItem of cartItems; track $index) {
+    <app-cart-item [item]="cartItem"></app-cart-item>
+    } }
+  </ion-list>
+</ion-content>

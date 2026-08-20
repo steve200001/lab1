@@ -1,20 +1,62 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>JZAR Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+    <ion-toolbar color="primary">
+      <ion-title size="large">JZAR Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div style="padding: 20px; text-align: center">
+    <!-- Logo Icon at Pormal na Title -->
+    <ion-icon
+      name="snow-outline"
+      color="primary"
+      style="font-size: 64px; margin-top: 10px"
+    ></ion-icon>
+    <h2
+      style="
+        color: var(--ion-color-primary);
+        margin-top: 10px;
+        font-weight: bold;
+      "
+    >
+      JZAR Center
+    </h2>
+    <p style="color: var(--ion-color-medium); margin-bottom: 30px">
+      Inventory and Sales Management System
+    </p>
+
+    <!-- Inventory Button -->
+    <ion-button
+      expand="block"
+      shape="round"
+      color="primary"
+      size="large"
+      [routerLink]="['/inventory']"
+      style="margin-bottom: 20px"
+    >
+      <ion-icon slot="start" name="cube-outline"></ion-icon>
+      Open Inventory
+    </ion-button>
+
+    <!-- Sales Button -->
+    <ion-button
+      expand="block"
+      shape="round"
+      color="secondary"
+      size="large"
+      [routerLink]="['/sales']"
+    >
+      <ion-icon slot="start" name="cart-outline"></ion-icon>
+      Open Sales & Cart
+    </ion-button>
   </div>
 </ion-content>
